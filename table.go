@@ -278,12 +278,12 @@ func (t *Table) renderTerminal() (buffer string) {
 
 	// loop over the elements and render them
 	for _, e := range t.elements {
-		buffer += e.Render(style) + "\n"
+		buffer += e.Render(style) + "\r\n"
 	}
 
 	// add bottom line
 	if !style.SkipBorder {
-		buffer += (&Separator{where: LINE_BOTTOM}).Render(style) + "\n"
+		buffer += (&Separator{where: LINE_BOTTOM}).Render(style) + "\r\n"
 	}
 
 	return buffer
@@ -333,12 +333,12 @@ func (t *Table) renderMarkdown() (buffer string) {
 		// markup would require a heavy dependency, so we punt.
 		buffer += "Table: " +
 			strings.TrimSpace(CreateCell(t.title, &CellStyle{}).Render(style)) +
-			"\n\n"
+			"\r\n\r\n"
 	}
 
 	// loop over the elements and render them
 	for _, e := range t.elements {
-		buffer += e.Render(style) + "\n"
+		buffer += e.Render(style) + "\r\n"
 	}
 
 	return buffer
